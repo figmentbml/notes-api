@@ -2,8 +2,7 @@ class NotesController < ApplicationController
   before_action :set_note, only: [:show, :update, :destroy]
 
   def index
-    @notes = Note.all
-    render json: @notes
+    render json: Note.all
   end
 
   def create
@@ -24,7 +23,7 @@ class NotesController < ApplicationController
 
   def destroy
     @note.destroy
-    render json: @note
+    render json: {}
   end
 
   private
@@ -35,9 +34,7 @@ class NotesController < ApplicationController
   def note_params
     params.required(:note).permit(
     :title,
-    :body,
-    :created_at,
-    :updated_at
+    :body
     )
   end
 
